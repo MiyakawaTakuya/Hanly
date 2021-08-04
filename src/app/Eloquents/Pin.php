@@ -11,6 +11,6 @@ class Pin extends Model
     protected $table = 'pins';
     // Eloquentを通して更新や登録が可能なフィールド（ホワイトリストを定義）
     protected $fillable = [
-        'friend_id', 'latitude', 'longitude',
+        'friends_id', 'latitude', 'longitude',
     ];
 }

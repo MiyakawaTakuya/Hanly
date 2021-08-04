@@ -19,7 +19,7 @@ class CreatePinsTable extends Migration
             $table->double('latitude', 9, 7)->comment('緯度');
             $table->double('longitude', 10, 7)->comment('経度');
             // $table->timestamp('created_at', $precision = 0)->comment('作成日時');
-            $table->timestamps($precision = 0); //作成日時
+            $table->timestamps(); //作成日時
 
             $table->index('friends_id');
 

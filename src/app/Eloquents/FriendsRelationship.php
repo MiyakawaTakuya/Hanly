@@ -2,7 +2,7 @@
 
 namespace App\Eloquents;
 
-use Illuminate\Database\Eloquent\Collection;
+// use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class FriendsRelationship extends Model
@@ -15,10 +15,10 @@ class FriendsRelationship extends Model
         'own_friends_id', 'other_friends_id',
     ];
 
-    public function myFriends(int $friendId):Collection
-    {
-        return $this->newInstance()
-            ->where('own_friends_id', $friendId)
-            ->get();
-    }
+    // public function myFriends(int $friendId):Collection
+    // {
+    //     return $this->newInstance()
+    //         ->where('own_friends_id', $friendId)
+    //         ->get();
+    // }
 }

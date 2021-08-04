@@ -11,33 +11,37 @@ class LocalDevelopSeeder extends Seeder
      */
     public function run()
     {
-        //
         // \App\Eloquents\Friend::create([
-        //     'nickname' => '鈴木',
+        //     'nickname' => '松谷',
         //     'email' => 'test@hoge.com',
         //     'password' => bcrypt('this is password'),
         //     'image_path' => null,
         //     'remember_token' => \Str::random(10),
         // ]);
-        // Factoryの定義に合わせて、１０件のデータをつくってくれー
+
         // factory(\App\Eloquents\Friend::class, 10)->create();
 
-        // 友達を１名作成
+        // 友だちを１名作成
         factory(\App\Eloquents\Friend::class, 1)
             ->create([
-                'nickname' => 'miyakawa',
-                'email' => 'miyakawa@test.com',
+                'nickname' => 'matsutani',
+                'email' => 'matsutani@test.com',
             ])
             ->each(function ($friend) {
+                // factory()の第2引数に数を指定すると、返り値がCollectionクラスになるため、ループできる
+
+                // 友だち関係を作る
                 factory(\App\Eloquents\FriendsRelationship::class, 3)->create([
                     'own_friends_id' => $friend->id,
                 ]);
+
+                // Pinデータも作っておく
                 factory(\App\Eloquents\Pin::class)->create([
                     'friends_id' => $friend->id,
                 ]);
             });
 
-        // 友達のいないユーザーを作成
+        // 友だちのいないユーザーを作成
         factory(\App\Eloquents\Friend::class, 1)
             ->create([
                 'nickname' => 'alone',
@@ -49,18 +53,17 @@ class LocalDevelopSeeder extends Seeder
                 ]);
             });
 
-        // 適当なユーザー3名を作成
+        // あとは適当なユーザを３人作成
         factory(\App\Eloquents\Friend::class, 3)
             ->create()
             ->each(function ($friend) {
                 factory(\App\Eloquents\FriendsRelationship::class, 3)->create([
                     'own_friends_id' => $friend->id,
                 ]);
+
                 factory(\App\Eloquents\Pin::class)->create([
                     'friends_id' => $friend->id,
                 ]);
             });
-
-        \Artisan::call('passport:client --password --provider users');
     }
 }

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(FriendsRelationship::class, function (Faker $faker) {
     return [
-        'own_friends_id' => factory(\APP\Eloquent\Friend::class)->create()->id,
-        'other_friends_id' => factory(\APP\Eloquent\Friend::class)->create()->id,
+        'own_friends_id' => factory(\App\Eloquents\Friend::class)->create()->id,
+        'other_friends_id' => factory(\App\Eloquents\Friend::class)->create()->id,
     ];
 });
