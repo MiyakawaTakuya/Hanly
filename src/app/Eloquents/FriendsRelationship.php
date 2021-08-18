@@ -21,4 +21,8 @@ class FriendsRelationship extends Model
     //         ->where('own_friends_id', $friendId)
     //         ->get();
     // }
+    public function friend()
+    {
+        return $this->belongsTo(\App\Eloquents\Friend::class, 'own_friends_id', 'id');
+    }
 }

@@ -13,4 +13,8 @@ class Pin extends Model
     protected $fillable = [
         'friends_id', 'latitude', 'longitude',
     ];
+    public function friend()
+    {
+        return $this->hasOne(\App\Eloquents\Friend::class, 'id', 'friends_id');
+    }
 }
