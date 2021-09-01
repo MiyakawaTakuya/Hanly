@@ -65,5 +65,8 @@ class LocalDevelopSeeder extends Seeder
                     'friends_id' => $friend->id,
                 ]);
             });
+
+        //client_secretを自動で発行してくれるので、楽になります
+        \Artisan::call('passport:client --password');
     }
 }
